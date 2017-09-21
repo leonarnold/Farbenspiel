@@ -22,10 +22,24 @@ public class Farbenspiel extends JFrame {
     }
 
     private void iniEvent() {
-        MeinInnererActionListener mial = new MeinInnererActionListener();
-        jbBlau.addActionListener(mial);
-        jbGruen.addActionListener(mial);
-        jbRot.addActionListener(mial);
+        jbBlau.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jPanel.setBackground(Color.BLUE);
+            }
+        });
+        jbGruen.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jPanel.setBackground(Color.GREEN);
+            }
+        });
+        jbRot.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jPanel.setBackground(Color.RED);
+            }
+        });
     }
 
     public void initComponents(){
@@ -39,24 +53,7 @@ public class Farbenspiel extends JFrame {
         this.add(jPanel);
     }
 
-    public class MeinInnererActionListener implements ActionListener{
 
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            System.out.println(e.getActionCommand());
-            switch (e.getActionCommand()){
-                case "Rot":
-                    jPanel.setBackground(Color.RED);
-                    break;
-                case "Grün":
-                    jPanel.setBackground(Color.GREEN);
-                    break;
-                case "Blau":
-                    jPanel.setBackground(Color.BLUE);
-                    break;
-            }
-        }
-    }
 
 
 }
